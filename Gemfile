@@ -29,6 +29,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver', '~> 3.142.6'
   gem 'shoulda-matchers', '~> 4.1'
+  gem 'simplecov', require: false
   gem 'webdrivers', '~> 4.1.3'
 end
 

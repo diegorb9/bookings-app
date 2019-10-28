@@ -16,7 +16,7 @@ feature 'User sign up' do
     expect(page).to have_text('Bem-vindo! Você se registrou com êxito.')
   end
 
-  scenario "doesn't fill the fields and show error message " do
+  scenario "doesn't fill the fields and show error message" do
     click_button 'Cadastrar'
 
     expect(page).to have_text('E-mail não pode ficar em branco') &&
