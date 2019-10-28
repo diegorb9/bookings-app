@@ -36,6 +36,13 @@ class BookingsPresenter
     (6..23).to_a.map { |h| "#{format('%.2d', h)}:00:00" }
   end
 
+  def availability_text(booking)
+    I18n.t(
+      :reserved_for,
+      user_name: booking.user.name, scope: %i[pages bookings index]
+    )
+  end
+
   private
 
   attr_reader :relation, :date
