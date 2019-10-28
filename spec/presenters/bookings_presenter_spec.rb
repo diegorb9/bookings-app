@@ -29,4 +29,16 @@ RSpec.describe BookingsPresenter do
       expect(presenter.end_of_week).to eql('01/11/2019'.to_date)
     end
   end
+
+  describe '#previous_link' do
+    it 'returns index path with last week date' do
+      expect(presenter.previous_link).to eql('/bookings?date=2019-10-21')
+    end
+  end
+
+  describe '#next_link' do
+    it 'returns index path with next week date' do
+      expect(presenter.next_link).to eql('/bookings?date=2019-11-04')
+    end
+  end
 end
