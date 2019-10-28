@@ -15,6 +15,8 @@ gem 'webpacker', '~> 4.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'devise', '~> 4.7.1'
+
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', '~> 0.75.1', require: false
@@ -30,6 +32,6 @@ group :test do
 end
 
 group :development, :test do
+  gem 'dotenv-rails', '~> 2.7.5'
   gem 'rspec-rails', '~> 3.8'
-  gem 'dotenv-rails'
 end
