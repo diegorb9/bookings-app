@@ -27,14 +27,16 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'rails-controller-testing', '~> 1.0.4'
   gem 'selenium-webdriver', '~> 3.142.6'
   gem 'shoulda-matchers', '~> 4.1'
   gem 'simplecov', require: false
+  gem 'timecop', '~> 0.9.1'
   gem 'webdrivers', '~> 4.1.3'
 end
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7.5'
   gem 'factory_bot_rails', '~> 5.1.1'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 4.0.0.beta3'
 end
