@@ -12,8 +12,10 @@
   <body>
     <%= render 'shared/navbar' if current_user %>
 
-    <%= render 'shared/flash' %>
+    <div class="container" id="main">
+      <%= render 'shared/flash' %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>
