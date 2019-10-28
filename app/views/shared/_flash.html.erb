@@ -1,0 +1,9 @@
+<% for key, msg in flash %>
+  <% flash_class = flash_class(key) %>
+  <div>
+    <div class="alert alert-<%= flash_class %> alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <%= msg %>
+    </div>
+  </div>
+<% end %>
