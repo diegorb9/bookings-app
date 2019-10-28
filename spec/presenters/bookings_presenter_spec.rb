@@ -41,4 +41,20 @@ RSpec.describe BookingsPresenter do
       expect(presenter.next_link).to eql('/bookings?date=2019-11-04')
     end
   end
+
+  describe '#current_week_link' do
+    it 'returns index path with current week date' do
+      expect(presenter.current_week_link).to eql('/bookings?date=2019-10-28')
+    end
+  end
+
+  describe '#listable_hours' do
+    it 'returns a collection of formatted hours' do
+      expect(presenter.listable_hours).to eql(%w[
+                                                06:00:00 07:00:00 08:00:00 09:00:00 10:00:00 11:00:00 12:00:00 13:00:00
+                                                14:00:00 15:00:00 16:00:00 17:00:00 18:00:00 19:00:00 20:00:00 21:00:00
+                                                22:00:00 23:00:00
+                                              ])
+    end
+  end
 end

@@ -24,8 +24,16 @@ class BookingsPresenter
     bookings_path(date: beginning_of_week - 1.week)
   end
 
+  def current_week_link
+    bookings_path(date: Date.today)
+  end
+
   def next_link
     bookings_path(date: beginning_of_week + 1.week)
+  end
+
+  def listable_hours
+    (6..23).to_a.map { |h| "#{format('%.2d', h)}:00:00" }
   end
 
   private

@@ -23,13 +23,13 @@ pt-BR:
     - Nov
     - Dez
     day_names:
-    - Domingo
-    - Segunda
-    - Terça
-    - Quarta
-    - Quinta
-    - Sexta
-    - Sábado
+      sunday: Domingo
+      monday: Segunda
+      tuesday: Terça
+      wednesday: Quarta
+      thursday: Quinta
+      friday: Sexta
+      saturday: Sábado
     formats:
       default: ! '%d/%m/%Y'
       long: ! '%d de %B de %Y'
