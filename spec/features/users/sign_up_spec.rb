@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'User creates an account' do
+feature 'User sign up' do
   before { visit new_user_registration_path }
 
   scenario 'fills the fields correctly and show success message' do
