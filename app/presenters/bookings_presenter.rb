@@ -33,7 +33,7 @@ class BookingsPresenter
   end
 
   def listable_hours
-    (6..23).to_a.map { |h| "#{format('%.2d', h)}:00:00" }
+    (6..23).to_a.map { |h| "#{format('%.2d', h)}:00" }
   end
 
   def availability_text(booking)

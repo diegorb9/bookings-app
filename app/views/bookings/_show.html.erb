@@ -1,6 +1,6 @@
 <div class="modal-body">
   <p class="small"><b>Data: </b><%= l(@booking.date) %></p>
-  <p class="small"><b>Hora: </b><%= @booking.time %></p>
+  <p class="small"><b>Horário: </b><%= @booking.time.strftime('%H:%M') %></p>
   <p class="small"><b>Descrição: </b><%= @booking.description %></p>
 </div>
 <div class="modal-footer">

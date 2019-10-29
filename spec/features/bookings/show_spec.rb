@@ -7,7 +7,7 @@ feature 'Showing a booking' do
 
   given(:date) { '28/10/2019' }
   given(:user) { create(:user) }
-  given!(:booking) { create(:booking, user: user, date: date, time: '06:00:00') }
+  given!(:booking) { create(:booking, user: user, date: date, time: '06:00') }
 
   before { Timecop.freeze(date) }
   after { Timecop.return }
@@ -23,7 +23,7 @@ feature 'Showing a booking' do
 
     within '#modal' do
       expect(page).to have_text('Data:') && have_text('28/10/2019')
-      expect(page).to have_text('Horário:') && have_text('06:00:00')
+      expect(page).to have_text('Horário:') && have_text('06:00')
       expect(page).to have_text('Descrição:') && have_text('Foo bar')
     end
   end

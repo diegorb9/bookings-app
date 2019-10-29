@@ -19,7 +19,7 @@ feature 'Creating bookings', js: true do
 
     within '#modal' do
       expect(page).to have_text('Data') && have_text('28/10/2019')
-      expect(page).to have_text('Horário') && have_text('07:00:00')
+      expect(page).to have_text('Horário') && have_text('07:00')
 
       fill_in 'Descrição', with: 'Example'
 
@@ -40,7 +40,7 @@ feature 'Creating bookings', js: true do
 
     within '#modal' do
       expect(page).to have_text('Data') && have_text('28/10/2019')
-      expect(page).to have_text('Horário') && have_text('07:00:00')
+      expect(page).to have_text('Horário') && have_text('07:00')
 
       fill_in 'Descrição', with: ''
 
@@ -57,7 +57,7 @@ feature 'Creating bookings', js: true do
 
     within '#modal' do
       expect(page).to have_text('Data') && have_text('28/10/2019')
-      expect(page).to have_text('Horário') && have_text('07:00:00')
+      expect(page).to have_text('Horário') && have_text('07:00')
 
       fill_in 'Descrição', with: 'Example'
 
