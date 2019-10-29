@@ -18,7 +18,7 @@
 
 ### Running the server
 
-    $ foreman start
+    $ foreman start -f Procfile.dev
 
 ### Running the test suite
 
