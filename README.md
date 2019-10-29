@@ -1,24 +1,35 @@
-# README
+## Project setup
+### Pre Requirements
+* Linux / Mac OSX
+* [Ruby 2.6.5](https://www.ruby-lang.org)
+* [PostgreSQL 10.9](https://www.postgresql.org)
+* [Bundler gem](https://github.com/bundler/bundler)
+* [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/home)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Install gems and dependencies
 
-Things you may want to cover:
+    $ bundle install
+    $ gem install foreman
+    $ npm -g install chromedriver
 
-* Ruby version
+### Create database
 
-* System dependencies
+    $ rails db:create
 
-* Configuration
+### Running the server
 
-* Database creation
+    $ foreman start
 
-* Database initialization
+### Running the test suite
 
-* How to run the test suite
+1. Prepare the test database (if not created earlier):
 
-* Services (job queues, cache servers, search engines, etc.)
+        $ rails db:test:prepare
 
-* Deployment instructions
+2. Run the test suite:
 
-* ...
+        $ COVERAGE=true rspec
+
+4. Check the coverage result at:
+
+        $ open ./coverage/index.html
