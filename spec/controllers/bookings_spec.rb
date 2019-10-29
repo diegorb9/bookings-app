@@ -84,6 +84,35 @@ RSpec.describe BookingsController, type: :controller do
     end
   end
 
+  describe '#update' do
+    context 'when success' do
+      let(:booking) { create(:booking, user: user) }
+
+      it 'updates the booking' do
+        patch :update, params: {
+          id: booking.id,
+          booking: { description: 'QWEBAR' }
+        }, xhr: true
+
+        expect(booking.reload.description).to eql('QWEBAR')
+      end
+    end
+
+    context 'when failure' do
+      let(:user1) { create(:user, email: 'foo@example.com') }
+      let(:booking) { create(:booking, user: user1) }
+
+      it 'redirects to root_path' do
+        patch :update, params: {
+          id: booking.id,
+          booking: { description: 'QWEBAR' }
+        }, xhr: true
+
+        expect(response).to redirect_to(root_url)
+      end
+    end
+  end
+
   describe '#destroy' do
     context 'when success' do
       let(:booking) { create(:booking, date: '30/10/2019', user: user) }

@@ -2,11 +2,11 @@
   <div class="modal-body">
     <div id="errors"></div>
 
-    <p class="small"><b>Data: </b><%= l(params[:date].to_date) %></p>
-    <%= f.input :date, as: :hidden, input_html: { value: params[:date] } %>
+    <p class="small"><b>Data: </b><%= l(@booking.date || params[:date].to_date) %></p>
+    <%= f.input :date, as: :hidden, input_html: { value: @booking.date || params[:date] } %>
 
-    <p class="small"><b>Hora: </b><%= params[:time] %></p>
-    <%= f.input :time, as: :hidden, input_html: { value: params[:time] } %>
+    <p class="small"><b>Hora: </b><%= @booking.time&.strftime('%H:%M') || params[:time] %></p>
+    <%= f.input :time, as: :hidden, input_html: { value: @booking.time || params[:time] } %>
 
     <%= f.input :description, required: true, input_html: { class: 'form-control' } %>
   </div>

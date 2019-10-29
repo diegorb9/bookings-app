@@ -19,10 +19,16 @@ RSpec.describe User, type: :model do
 
     let(:user) { build_stubbed(:user) }
 
-    context 'when booking.user_id is equal the current_user.id' do
+    context 'when able to destroy' do
       let(:booking) { build_stubbed(:booking, user: user) }
 
       it { should be_able_to(:destroy, booking) }
+    end
+
+    context 'when able to update' do
+      let(:booking) { build_stubbed(:booking, user: user) }
+
+      it { should be_able_to(:update, booking) }
     end
   end
 end

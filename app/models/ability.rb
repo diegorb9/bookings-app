@@ -5,5 +5,6 @@ class Ability
 
   def initialize(user)
     can :destroy, Booking, user_id: user.id
+    can :update, Booking, user_id: user.id
   end
 end

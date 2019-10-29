@@ -18,7 +18,7 @@ feature 'Showing a booking' do
     within 'tr:nth-child(1) td:nth-child(2)' do
       expect(page).to have_text("Reservado para #{user.name}")
 
-      find("#show-#{booking.id}").click
+      find("#edit-#{booking.id}").click
     end
 
     within '#modal' do

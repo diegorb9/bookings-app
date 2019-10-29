@@ -1,0 +1,11 @@
+<% if @booking.errors.any? %>
+  $('#errors').html("<%= j render('shared/errors', resource: @booking) %>");
+<% else %>
+  $('#modal').modal('hide');
+  $.notify({ message: 'Reserva atualizada com sucesso.' }, { type: 'success' });
+
+  $.ajax({
+    url: "/bookings?date=<%= @booking.date %>",
+    dataType: 'script'
+  });
+<% end %>
