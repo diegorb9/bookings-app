@@ -5,3 +5,4 @@ require("channels")
 require('jquery')
 
 import './bootstrap.js'
+import "@fortawesome/fontawesome-free/js/all";
