@@ -7,9 +7,12 @@ feature 'Creating bookings', js: true do
 
   given!(:user) { create(:user) }
 
-  background { visit bookings_path }
+  background do
+    Timecop.freeze('28/10/2019 01:00:00')
 
-  before { Timecop.freeze('30/10/2019') }
+    visit bookings_path
+  end
+
   after { Timecop.return }
 
   scenario 'opens modal, fills description and checks for success message' do

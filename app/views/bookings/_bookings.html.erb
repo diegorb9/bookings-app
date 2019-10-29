@@ -32,7 +32,7 @@
         <% (@bookings_presenter.beginning_of_week..@bookings_presenter.end_of_week).each_with_index do |day, index| %>
           <% if booking = @bookings_presenter.records.find_by(date: day, time: hour) %>
             <td class="text-center nowrap">
-              <%= link_to (raw @bookings_presenter.availability_text(booking)), booking_path(booking),
+              <%= link_to (raw @bookings_presenter.reservation_text(booking)), booking_path(booking),
                   remote: true, class: 'reservedLink', id: "show-#{booking.id}" %>
 
               <% if can?(:destroy, booking) %>
@@ -44,7 +44,7 @@
             </td>
           <% else %>
             <td class="text-center">
-              <%= link_to 'Disponível', new_booking_path(date: day, time: hour), remote: true, class: 'link' %>
+              <%= @bookings_presenter.availability_text(day, hour) %>
             </td>
           <% end %>
         <% end %>

@@ -2,6 +2,7 @@
 
 class BookingsPresenter
   include Rails.application.routes.url_helpers
+  include ActionView::Helpers::UrlHelper
 
   def initialize(relation, date)
     @relation = relation
@@ -33,17 +34,31 @@ class BookingsPresenter
   end
 
   def listable_hours
-    (6..23).to_a.map { |h| "#{format('%.2d', h)}:00" }
+    (6..23).to_a.map { |h| formatted_hour(h) }
   end
 
-  def availability_text(booking)
+  def reservation_text(booking)
     I18n.t(
       :reserved_for,
       user_name: booking.user.name, scope: %i[pages bookings index]
     )
   end
 
+  def availability_text(day, hour, based_on = DateTime.current)
+    parsed_date = Time.parse("#{day} #{hour}")
+    return '-' if based_on > parsed_date
+
+    link_to(
+      'Disponível', new_booking_path(date: day, time: formatted_hour(hour.to_i)),
+      remote: true, class: 'link'
+    )
+  end
+
   private
 
   attr_reader :relation, :date
+
+  def formatted_hour(hour)
+    "#{format('%.2d', hour)}:00"
+  end
 end

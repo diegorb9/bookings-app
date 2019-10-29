@@ -8,7 +8,10 @@ feature 'Destroying bookings', js: true do
   given!(:user) { create(:user) }
   given!(:booking) { create(:booking, date: '28/10/2019', time: '06:00:00', user: user) }
 
-  background { visit bookings_path }
+  background do
+    Timecop.freeze('28/10/2019 05:00')
+    visit bookings_path
+  end
 
   scenario 'clicks at button and check for a success message' do
     within 'tr:nth-child(1) td:nth-child(2)' do

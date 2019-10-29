@@ -8,6 +8,9 @@ RSpec.describe BookingsPresenter do
 
   subject(:presenter) { described_class.new(relation, date) }
 
+  before { Timecop.freeze('30/10/2019 08:00:00') }
+  after { Timecop.return }
+
   describe '#records' do
     it 'returns relation scoped by date' do
       expect(relation).to receive(:where)
@@ -44,7 +47,7 @@ RSpec.describe BookingsPresenter do
 
   describe '#current_week_link' do
     it 'returns index path with current week date' do
-      expect(presenter.current_week_link).to eql('/bookings?date=2019-10-28')
+      expect(presenter.current_week_link).to eql('/bookings?date=2019-10-30')
     end
   end
 
@@ -61,14 +64,32 @@ RSpec.describe BookingsPresenter do
     end
   end
 
-  describe '#availability_text' do
+  describe '#reservation_text' do
     let(:user) { double(:user, name: 'John Doe') }
     let(:booking) { double(:booking, user: user) }
 
     it 'returns correct text' do
       expect(
-        presenter.availability_text(booking)
+        presenter.reservation_text(booking)
       ).to eql('Reservado para <b>John Doe</b>')
+    end
+  end
+
+  describe '#availability_text' do
+    context 'when the period is before now' do
+      it 'returns default text' do
+        expect(
+          presenter.availability_text('20/10/2019', '10:00:00')
+        ).to eql('-')
+      end
+    end
+
+    context 'when the period is after now' do
+      it 'returns default text' do
+        expect(
+          presenter.availability_text('01/11/2019', '09:00:00')
+        ).to eql('<a class="link" data-remote="true" href="/bookings/new?date=01%2F11%2F2019&amp;time=09%3A00">Disponível</a>')
+      end
     end
   end
 end
