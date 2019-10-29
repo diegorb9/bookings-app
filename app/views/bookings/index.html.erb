@@ -1,13 +1,5 @@
 <h1 class="mb-3">Reserva de Sala</h1>
 
-<div class="card card-body bg-light mb-3">
-  <div class="button-group mx-auto small">
-    <%= link_to '<<', @bookings_presenter.previous_link, class: 'btn btn-sm btn-primary' %>
-    <%= link_to 'VER SEMANA ATUAL', @bookings_presenter.current_week_link, class: 'btn btn-sm btn-secondary' %>
-    <%= link_to '>>', @bookings_presenter.next_link, class: 'btn btn-sm btn-primary text-right' %>
-  </div>
-</div>
-
 <div id="bookings">
   <%= render 'bookings' %>
 </div>

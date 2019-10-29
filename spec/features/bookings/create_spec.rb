@@ -33,6 +33,23 @@ feature 'Creating bookings', js: true do
     end
   end
 
+  scenario 'opens modal, fills description and checks for error message' do
+    within 'tr:nth-child(2) td:nth-child(2)' do
+      click_link 'Disponível'
+    end
+
+    within '#modal' do
+      expect(page).to have_text('Data') && have_text('28/10/2019')
+      expect(page).to have_text('Horário') && have_text('07:00:00')
+
+      fill_in 'Descrição', with: ''
+
+      click_button 'Reservar'
+
+      expect(page).to have_text('Descrição não pode ficar em branco')
+    end
+  end
+
   scenario 'opens the modal, clicks cancel and checks if the reservation available' do
     within 'tr:nth-child(2) td:nth-child(2)' do
       click_link 'Disponível'

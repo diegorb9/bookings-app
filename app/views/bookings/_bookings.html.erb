@@ -1,3 +1,11 @@
+<div class="card card-body bg-light mb-3">
+  <div class="button-group mx-auto small">
+    <%= link_to '<<', @bookings_presenter.previous_link, class: 'btn btn-sm btn-primary', remote: true, id: 'previous_week' %>
+    <%= link_to 'VER SEMANA ATUAL', @bookings_presenter.current_week_link, class: 'btn btn-sm btn-secondary', remote: true, id: 'current_week' %>
+    <%= link_to '>>', @bookings_presenter.next_link, class: 'btn btn-sm btn-primary text-right', remote: true, id: 'next_week' %>
+  </div>
+</div>
+
 <table class="table table-bordered">
   <thead>
     <th>Horário</th>
