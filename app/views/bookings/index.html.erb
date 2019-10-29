@@ -8,28 +8,8 @@
   </div>
 </div>
 
-<table class="table table-bordered">
-  <thead>
-    <th>Horário</th>
-    <% (@bookings_presenter.beginning_of_week..@bookings_presenter.end_of_week).each do |day| %>
-      <th class="text-center">
-        <%= I18n.t(day.strftime('%A').downcase, scope: [:date, :day_names]) %>
-        <small>(<%= l(day) %>)</small>
-      </th>
-    <% end %>
-  </thead>
-  <tbody>
-    <% @bookings_presenter.listable_hours.each do |hour| %>
-      <tr>
-        <td class="text-center"><%= hour %></td>
-        <% (@bookings_presenter.beginning_of_week..@bookings_presenter.end_of_week).each_with_index do |day, index| %>
-          <% if booking = @bookings_presenter.records.find_by(date: day, time: hour) %>
-            <td class="text-center"><%= raw @bookings_presenter.availability_text(booking) %></td>
-          <% else %>
-            <td class="text-center"><%= link_to 'Disponível', '#', class: 'link' %></td>
-          <% end %>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="bookings">
+  <%= render 'bookings' %>
+</div>
+
+<%= render 'shared/modal' %>

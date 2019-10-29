@@ -208,12 +208,17 @@ pt-BR:
   activerecord:
     models:
       user: Usuário
+      booking: Reserva
     attributes:
       user:
         name: Nome
         password: Senha
         email: E-mail
         password_confirmation: Confirmação da Senha
+      booking:
+        description: Descrição
+        date: Data
+        time: Horário
     errors:
       <<: *errors
 
@@ -221,6 +226,9 @@ pt-BR:
     submit:
       create: 'Salvar %{model}'
       update: 'Atualizar'
+      booking:
+        create: 'Reservar'
+        update: 'Atualizar'
 
   views:
     pagination:
