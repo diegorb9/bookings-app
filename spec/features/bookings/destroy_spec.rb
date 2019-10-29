@@ -15,6 +15,8 @@ feature 'Destroying bookings', js: true do
       find("#destroy-#{booking.id}").click
     end
 
+    page.driver.browser.switch_to.alert.accept
+
     expect(page).to have_text('Reserva deletada com sucesso.')
 
     within 'tr:nth-child(1) td:nth-child(2)' do
