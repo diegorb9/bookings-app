@@ -1,0 +1,8 @@
+<% if @booking.destroyed? %>
+  $.notify({ message: 'Reserva deletada com sucesso.' }, { type: 'success' });
+
+  $.ajax({
+    url: "/bookings?date=<%= @booking.date %>",
+    dataType: 'script'
+  });
+<% end %>

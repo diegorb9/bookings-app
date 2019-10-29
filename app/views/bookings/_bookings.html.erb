@@ -34,8 +34,8 @@
             <td class="text-center nowrap">
               <%= raw @bookings_presenter.availability_text(booking) %>
 
-              <% if booking.user == current_user %>
-                <%= link_to booking_path(booking), method: :delete, remote: true do %>
+              <% if can?(:destroy, booking) %>
+                <%= link_to booking_path(booking), method: :delete, remote: true, id: "destroy-#{booking.id}" do %>
                   <span><i class="fas fa-redo"></i></span>
                 <% end %>
               <% end %>

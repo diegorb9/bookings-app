@@ -15,6 +15,7 @@ gem 'webpacker', '~> 4.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 4.7.1'
 gem 'simple_form', '~> 5.0.1'
 

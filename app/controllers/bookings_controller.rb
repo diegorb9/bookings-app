@@ -4,6 +4,14 @@ class BookingsController < ApplicationController
   respond_to :html, :js
 
   before_action :authenticate_user!
+  before_action :set_booking, only: %i[destroy]
+
+  def index
+    @bookings_presenter = BookingsPresenter.new(
+      Booking.order(date: :asc),
+      params[:date] || Date.today
+    )
+  end
 
   def new
     @booking = current_user.bookings.new
@@ -15,16 +23,20 @@ class BookingsController < ApplicationController
     respond_with @booking, location: bookings_path
   end
 
-  def index
-    @bookings_presenter = BookingsPresenter.new(
-      Booking.order(date: :asc),
-      params[:date] || Date.today
-    )
+  def destroy
+    authorize! :destroy, @booking
+
+    @booking.destroy
+    respond_with @booking, location: bookings_path
   end
 
   private
 
   def booking_params
     params.require(:booking).permit(:date, :time, :description)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end

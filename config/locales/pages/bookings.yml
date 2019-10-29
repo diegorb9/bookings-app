@@ -1,5 +1,6 @@
 pt-BR:
   pages:
+    unathorized_action: Você não têm permissão para realizar essa ação.
     bookings:
       index:
         reserved_for: Reservado para <b>%{user_name}</b>
