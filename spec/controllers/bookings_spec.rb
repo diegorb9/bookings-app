@@ -74,6 +74,16 @@ RSpec.describe BookingsController, type: :controller do
     end
   end
 
+  describe '#show' do
+    let(:booking) { create(:booking, date: '30/10/2019', user: user) }
+
+    it 'renders :show template' do
+      get :show, params: { id: booking.id }, xhr: true
+
+      expect(response).to render_template(:show)
+    end
+  end
+
   describe '#destroy' do
     context 'when success' do
       let(:booking) { create(:booking, date: '30/10/2019', user: user) }

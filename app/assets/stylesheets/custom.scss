@@ -2,7 +2,21 @@
   font-size: 14px;
 }
 
+label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
 .currentWeekButton {
   font-size: 13px;
   font-weight: 700;
+}
+
+.reservedLink {
+  color: #868686;
+  text-decoration: underline;
+}
+
+.destroyLink {
+  color: #d68080;
 }

@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   respond_to :html, :js
 
   before_action :authenticate_user!
-  before_action :set_booking, only: %i[destroy]
+  before_action :set_booking, only: %i[show destroy]
 
   def index
     @bookings_presenter = BookingsPresenter.new(
@@ -22,6 +22,8 @@ class BookingsController < ApplicationController
 
     respond_with @booking, location: bookings_path
   end
+
+  def show; end
 
   def destroy
     authorize! :destroy, @booking
